@@ -3,6 +3,6 @@ module.exports = class Party {
         this.id = this.globalCounterCat++;
         this.title = _category.title;
     }
-}
+};
 
 globalCounterCat = 0;

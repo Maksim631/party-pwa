@@ -9,6 +9,6 @@ module.exports = class Party {
         this.address = _party.address;
         this.category = _party.category;
     }
-}
+};
 
 globalCounterParty = 0;

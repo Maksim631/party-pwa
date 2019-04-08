@@ -3,22 +3,24 @@ module.exports = function(app) {
   const partyController = require('../controllers/party');
 
   app.route('/parties')
-    .get(partyController.getParties);
+    .get(partyController.getParties)
+    .post(partyController.updateParties);
 
   app.route('/party/:partyId')
     .delete(partyController.deleteParty)
-    .put(partyController.updateParty);
+    .post(partyController.updateParty);
 
   app.route('/party')
-    .post(partyController.createParty);
+    .put(partyController.createParty);
 
   app.route('/categories')
-    .get(categoryController.getCategories);
+    .get(categoryController.getCategories)
+    .post(categoryController.updateCategories);
 
   app.route('/category/:categoryId')
     .delete(categoryController.deleteCategory)
-    .put(categoryController.updateCategory);
+    .post(categoryController.updateCategory);
 
   app.route('/category')
-    .post(categoryController.createCategory);
+    .put(categoryController.createCategory);
 };

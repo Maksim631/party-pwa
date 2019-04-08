@@ -1,0 +1,18 @@
+<mat-card class="party-card"
+          [ngClass]="{'_enter': party.enter}">
+  <mat-card-header>
+    <mat-card-title>{{party.title}}</mat-card-title>
+    <mat-card-subtitle>{{party.description}}</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content class="party-card__content">
+    <p>{{party.date | date}}</p>
+    <p>{{party.price}}</p>
+    <p>{{party.address}}</p>
+    <p>{{party.category.title}}</p>
+  </mat-card-content>
+  <mat-card-actions class="party-card__actions">
+    <button class="party-card__actions_button">
+      <mat-icon svgIcon="dots"></mat-icon>
+    </button>
+  </mat-card-actions>
+</mat-card>
