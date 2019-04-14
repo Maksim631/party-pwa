@@ -1,9 +1,12 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {PartyHttpService} from '../../shared/services/party-http.service';
 import {Party} from '../../shared/models/party';
-import {DomSanitizer} from '@angular/platform-browser';
-import {MatIconRegistry} from '@angular/material';
+import {Select, Store} from '@ngxs/store';
+import {ChangeParty, DeleteParty} from '../../actions/party.action';
+import {CategoryState} from '../../state/category.state';
 import {Category} from '../../shared/models/category';
+import {Observable} from 'rxjs';
+import {MatOptionSelectionChange} from '@angular/material/typings/core';
 
 @Component({
   selector: 'app-party-card',
@@ -11,6 +14,7 @@ import {Category} from '../../shared/models/category';
   styleUrls: ['./party-card.component.less']
 })
 export class PartyCardComponent implements OnInit {
+  @Input()
   public party: Party = {
     id: 1,
     title: 'title',
@@ -25,15 +29,40 @@ export class PartyCardComponent implements OnInit {
     }
   };
 
+  @Select(CategoryState)
+  private categories$: Observable<Category[]>;
+
+  public categories: Category[];
+
+  public isChanging = false;
+
   constructor(private partyService: PartyHttpService,
-              iconRegistry: MatIconRegistry,
-              sanitizer: DomSanitizer) {
-    iconRegistry.addSvgIcon(
-      'dots',
-      sanitizer.bypassSecurityTrustResourceUrl('assets/more.svg'));
+              private store: Store) {
   }
 
   ngOnInit() {
+    this.categories$.subscribe((categories: Category[]) => {
+      this.categories = categories;
+    });
   }
 
+  deleteParty() {
+    this.store.dispatch(new DeleteParty(this.party.id));
+  }
+
+  saveParty() {
+    this.store.dispatch(new ChangeParty(this.party));
+    this.isChanging = !this.isChanging;
+  }
+
+  changeParty() {
+    this.isChanging = !this.isChanging;
+    console.log(this.categories);
+  }
+
+  changeCategory(event: MatOptionSelectionChange) {
+    this.party.category = this.categories.find((category: Category) => {
+      return category.title === event.source.viewValue;
+    });
+  }
 }

@@ -8,6 +8,10 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { PartyCardComponent } from './components/party-card/party-card.component';
 import {SharedModule} from './shared/shared.module';
+import {NgxsModule} from '@ngxs/store';
+import {NgxsReduxDevtoolsPluginModule} from '@ngxs/devtools-plugin';
+import {CategoryState} from './state/category.state';
+import {PartyState} from './state/party.state';
 
 @NgModule({
   declarations: [
@@ -19,6 +23,11 @@ import {SharedModule} from './shared/shared.module';
     AppRoutingModule,
     BrowserAnimationsModule,
     SharedModule,
+    NgxsModule.forRoot([
+      CategoryState,
+      PartyState
+    ]),
+    NgxsReduxDevtoolsPluginModule.forRoot(),
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [],
