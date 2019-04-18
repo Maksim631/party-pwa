@@ -12,11 +12,13 @@ import {NgxsModule} from '@ngxs/store';
 import {NgxsReduxDevtoolsPluginModule} from '@ngxs/devtools-plugin';
 import {CategoryState} from './state/category.state';
 import {PartyState} from './state/party.state';
+import { CategoryCardComponent } from './components/category-card/category-card.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    PartyCardComponent
+    PartyCardComponent,
+    CategoryCardComponent
   ],
   imports: [
     BrowserModule,

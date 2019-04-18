@@ -1,0 +1,25 @@
+<mat-card class="category-card">
+  <mat-card-header>
+    <mat-card-title>
+      <mat-form-field class="category-card__content_field">
+        <input matInput type="text" placeholder="Title" [disabled]="!isChanging" [(ngModel)]="category.title">
+      </mat-form-field>
+    </mat-card-title>
+  </mat-card-header>
+  <mat-card-actions class="category-card__actions">
+    <button mat-icon-button [matMenuTriggerFor]="menu" class="category-card__actions_button">
+      <mat-icon>more_vert</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item (click)="deleteCategory()">
+        <span>Delete</span>
+      </button>
+      <button mat-menu-item (click)="changeCategory()">
+        <span>Change</span>
+      </button>
+    </mat-menu>
+    <button mat-raised-button color="primary" (click)="saveCategory()" *ngIf="isChanging">
+      <span>Save</span>
+    </button>
+  </mat-card-actions>
+</mat-card>

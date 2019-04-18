@@ -1,5 +1,5 @@
 <mat-card class="party-card"
-          [ngClass]="{'_enter': party.enter}">
+          [ngClass]="{'_free': party.enter, '_notFree': !party.enter}">
   <mat-card-header>
     <mat-card-title>{{party.title}}</mat-card-title>
     <mat-card-subtitle>{{party.description}}</mat-card-subtitle>

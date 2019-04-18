@@ -1,5 +1,4 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {PartyHttpService} from '../../shared/services/party-http.service';
 import {Party} from '../../shared/models/party';
 import {Select, Store} from '@ngxs/store';
 import {ChangeParty, DeleteParty} from '../../actions/party.action';
@@ -36,8 +35,7 @@ export class PartyCardComponent implements OnInit {
 
   public isChanging = false;
 
-  constructor(private partyService: PartyHttpService,
-              private store: Store) {
+  constructor(private store: Store) {
   }
 
   ngOnInit() {
@@ -57,7 +55,6 @@ export class PartyCardComponent implements OnInit {
 
   changeParty() {
     this.isChanging = !this.isChanging;
-    console.log(this.categories);
   }
 
   changeCategory(event: MatOptionSelectionChange) {
