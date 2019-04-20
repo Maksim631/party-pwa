@@ -1,0 +1,13 @@
+<div class="create-category" mat-dialog-content>
+  <mat-form-field class="category-card__content_field">
+    <input matInput type="text" placeholder="Title" [(ngModel)]="data.title">
+  </mat-form-field>
+</div>
+<mat-toolbar>
+  <button mat-raised-button color="primary" [mat-dialog-close]="data" >
+    <span>Save</span>
+  </button>
+  <button mat-raised-button color="accent" (click)="onNoClick()">
+    <span>Cancel</span>
+  </button>
+</mat-toolbar>

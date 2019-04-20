@@ -2,6 +2,7 @@ import {Action, State, StateContext} from '@ngxs/store';
 import {Party} from '../shared/models/party';
 import {AddParty, ChangeParty, DeleteParty} from '../actions/party.action';
 import _ from 'node_modules/lodash';
+import {Category} from '../shared/models/category';
 
 @State<Party[]>({
   name: 'party',
@@ -9,25 +10,25 @@ import _ from 'node_modules/lodash';
 })
 export class PartyState {
   @Action(AddParty)
-  addParty(ctx: StateContext<Party[]>, action: Party) {
-    ctx.patchState([action]);
+  addParty(ctx: StateContext<Party[]>, action: AddParty) {
+    ctx.getState().push(action.party);
   }
 
   @Action(DeleteParty)
-  deleteParty(ctx: StateContext<Party[]>, action: number) {
+  deleteParty(ctx: StateContext<Party[]>, action: DeleteParty) {
     const state = ctx.getState();
     ctx.setState(_.remove(state, (party: Party) => {
-      return party.id === action;
+      return party.id !== action.partyId;
     }));
   }
 
   @Action(ChangeParty)
-  changeParty(ctx: StateContext<Party[]>, action: Party) {
-    let state = ctx.getState();
-    state = _.remove(state, (party: Party) => {
-      return party.id === action.id;
+  changeParty(ctx: StateContext<Party[]>, action: ChangeParty) {
+    const state = ctx.getState();
+    const index = _.findIndex(state, (party: Party) => {
+      return party.id === action.party.id;
     });
-    state.push(action);
+    state[index] = action.party;
     ctx.setState(state);
   }
 }

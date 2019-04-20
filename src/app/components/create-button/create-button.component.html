@@ -1,0 +1,11 @@
+<button mat-mini-fab [matMenuTriggerFor]="menu" class="create-button">
+  <mat-icon>add</mat-icon>
+</button>
+<mat-menu #menu="matMenu">
+  <button mat-menu-item (click)="createParty()">
+    <span>Create party</span>
+  </button>
+  <button mat-menu-item (click)="createCategory()">
+    <span>Create Category</span>
+  </button>
+</mat-menu>

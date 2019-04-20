@@ -14,19 +14,7 @@ import {MatOptionSelectionChange} from '@angular/material/typings/core';
 })
 export class PartyCardComponent implements OnInit {
   @Input()
-  public party: Party = {
-    id: 1,
-    title: 'title',
-    description: 'fjiogjdkgdfg',
-    enter: true,
-    date: new Date,
-    price: 123,
-    address: 'addwdew',
-    category: {
-      id: 2,
-      title: 'category'
-    }
-  };
+  public party: Party;
 
   @Select(CategoryState)
   private categories$: Observable<Category[]>;

@@ -1,0 +1,44 @@
+<div class="create-party" mat-dialog-content>
+  <mat-form-field class="create-party__content_field">
+    <input matInput placeholder="Title" [(ngModel)]="data.title">
+  </mat-form-field>
+  <mat-form-field class="create-party__content_field">
+    <input matInput placeholder="Description" [(ngModel)]="data.description">
+  </mat-form-field>
+  <mat-form-field class="create-party__content_field">
+    <input matInput [matDatepicker]="datePicker" placeholder="Date"
+           [(ngModel)]="data.date">
+    <mat-datepicker-toggle matSuffix [for]="datePicker"></mat-datepicker-toggle>
+    <mat-datepicker #datePicker></mat-datepicker>
+  </mat-form-field>
+
+  <mat-form-field class="create-party__content_field">
+    <input matInput type="number" placeholder="Price" [(ngModel)]="data.price">
+  </mat-form-field>
+  <mat-form-field class="create-party__content_field">
+    <input matInput placeholder="Address" [(ngModel)]="data.address">
+  </mat-form-field>
+  <mat-checkbox [(ngModel)]="data.enter"
+                [color]="'primary'"
+                [labelPosition]="'before'">
+    <span>Free enter</span>
+  </mat-checkbox>
+  <mat-form-field class="create-party__content_field">
+    <mat-label>Category</mat-label>
+    <mat-select>
+      <mat-option *ngFor="let category of categories"
+                  [value]="data.category.title"
+                  (onSelectionChange)="changeCategory($event)">
+        {{category.title}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+<mat-toolbar>
+  <button mat-raised-button color="primary" [mat-dialog-close]="data" >
+    <span>Save</span>
+  </button>
+  <button mat-raised-button color="accent" (click)="onNoClick()">
+    <span>Cancel</span>
+  </button>
+</mat-toolbar>

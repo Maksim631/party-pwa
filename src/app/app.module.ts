@@ -13,12 +13,22 @@ import {NgxsReduxDevtoolsPluginModule} from '@ngxs/devtools-plugin';
 import {CategoryState} from './state/category.state';
 import {PartyState} from './state/party.state';
 import { CategoryCardComponent } from './components/category-card/category-card.component';
+import { PartyCatalogueComponent } from './components/party-catalogue/party-catalogue.component';
+import { CategoryCatalogueComponent } from './components/category-catalogue/category-catalogue.component';
+import { CreateButtonComponent } from './components/create-button/create-button.component';
+import { CreatePartyComponent } from './components/create-party/create-party.component';
+import { CreateCategoryComponent } from './components/create-category/create-category.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PartyCardComponent,
-    CategoryCardComponent
+    CategoryCardComponent,
+    PartyCatalogueComponent,
+    CategoryCatalogueComponent,
+    CreateButtonComponent,
+    CreatePartyComponent,
+    CreateCategoryComponent
   ],
   imports: [
     BrowserModule,

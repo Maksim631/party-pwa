@@ -9,27 +9,27 @@ import {AddCategory, ChangeCategory, DeleteCategory} from '../actions/category.a
 })
 export class CategoryState {
   @Action(AddCategory)
-  addCategory(ctx: StateContext<Category[]>, action: Category) {
+  addCategory(ctx: StateContext<Category[]>, action: AddCategory) {
     const state = ctx.getState();
-    state.push(action);
+    state.push(action.category);
     ctx.setState(state);
   }
 
   @Action(DeleteCategory)
-  deleteCategory(ctx: StateContext<Category[]>, action: number) {
+  deleteCategory(ctx: StateContext<Category[]>, action: DeleteCategory) {
     const state = ctx.getState();
     ctx.setState(_.remove(state, (category: Category) => {
-      return category.id === action;
+      return category.id !== action.categoryId;
     }));
   }
 
   @Action(ChangeCategory)
-  changeCategory(ctx: StateContext<Category[]>, action: Category) {
-    let state = ctx.getState();
-    state = _.remove(state, (category: Category) => {
-      return category.id === action.id;
+  changeCategory(ctx: StateContext<Category[]>, action: ChangeCategory) {
+    const state = ctx.getState();
+    const index = _.findIndex(state, (category: Category) => {
+      return category.id === action.category.id;
     });
-    state.push(action);
+    state[index] = action.category;
     ctx.setState(state);
   }
 }

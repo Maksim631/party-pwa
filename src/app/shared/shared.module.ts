@@ -12,6 +12,13 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatButtonModule, MatInputModule, MatNativeDateModule} from '@angular/material';
 import {FormsModule} from '@angular/forms';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatTabsModule} from '@angular/material/tabs';
+import {TabService} from './services/tab.service';
+import {IdGeneratorService} from './services/id-generator.service';
+import {MatDialogModule} from '@angular/material/dialog';
+import {CreatePartyComponent} from '../components/create-party/create-party.component';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {CreateCategoryComponent} from '../components/create-category/create-category.component';
 
 
 
@@ -30,7 +37,10 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     MatInputModule,
     FormsModule,
     MatCheckboxModule,
-    MatButtonModule
+    MatButtonModule,
+    MatTabsModule,
+    MatDialogModule,
+    MatToolbarModule
   ],
   exports: [
     HttpClientModule,
@@ -43,12 +53,21 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     MatInputModule,
     FormsModule,
     MatCheckboxModule,
-    MatButtonModule
+    MatButtonModule,
+    MatTabsModule,
+    MatDialogModule,
+    MatToolbarModule
   ],
   providers: [
     PartyHttpService,
     CategoryHttpService,
+    TabService,
+    IdGeneratorService,
     MatNativeDateModule
+  ],
+  entryComponents: [
+    CreatePartyComponent,
+    CreateCategoryComponent
   ]
 })
 export class SharedModule {

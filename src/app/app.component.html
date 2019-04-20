@@ -1,1 +1,9 @@
-<app-category-card></app-category-card>
+<mat-tab-group [selectedIndex]="selectedTab">
+  <mat-tab label="Parties">
+    <app-party-catalogue></app-party-catalogue>
+  </mat-tab>
+  <mat-tab label="Categories">
+    <app-category-catalogue></app-category-catalogue>
+  </mat-tab>
+</mat-tab-group>
+<app-create-button></app-create-button>

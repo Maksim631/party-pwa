@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Select, Store} from '@ngxs/store';
+import {Store} from '@ngxs/store';
 import {Category} from '../../shared/models/category';
 import {ChangeCategory, DeleteCategory} from '../../actions/category.action';
 
@@ -11,10 +11,7 @@ import {ChangeCategory, DeleteCategory} from '../../actions/category.action';
 export class CategoryCardComponent implements OnInit {
 
   @Input()
-  public category: Category = {
-    id: 1,
-    title: 'title',
-  };
+  public category: Category;
 
 
   public isChanging = false;
