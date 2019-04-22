@@ -19,6 +19,7 @@ import {MatDialogModule} from '@angular/material/dialog';
 import {CreatePartyComponent} from '../components/create-party/create-party.component';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {CreateCategoryComponent} from '../components/create-category/create-category.component';
+import {OnlineService} from './services/online.service';
 
 
 
@@ -63,6 +64,7 @@ import {CreateCategoryComponent} from '../components/create-category/create-cate
     CategoryHttpService,
     TabService,
     IdGeneratorService,
+    OnlineService,
     MatNativeDateModule
   ],
   entryComponents: [

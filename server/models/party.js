@@ -1,6 +1,6 @@
 module.exports = class Party {
     constructor(_party) {
-        this.id = this.globalCounterParty++;
+        this.id = globalCounterParty++;
         this.title = _party.title;
         this.description = _party.description;
         this.enter = _party.enter;

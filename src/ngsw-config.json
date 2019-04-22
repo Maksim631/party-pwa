@@ -1,5 +1,19 @@
 {
   "index": "/index.html",
+  "dataGroups": [
+    {
+      "name": "getData",
+      "urls": [
+        "/categories",
+        "/parties"
+      ],
+      "cacheConfig": {
+        "maxSize": 100,
+        "maxAge": "5d",
+        "strategy": "performance"
+      }
+    }
+  ],
   "assetGroups": [
     {
       "name": "app",
@@ -12,7 +26,8 @@
           "/*.js"
         ]
       }
-    }, {
+    },
+    {
       "name": "assets",
       "installMode": "lazy",
       "updateMode": "prefetch",

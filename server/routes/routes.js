@@ -1,6 +1,10 @@
-module.exports = function(app) {
+module.exports = function (app) {
   const categoryController = require('../controllers/category');
   const partyController = require('../controllers/party');
+
+  app.route('/connection').get((req, res) => {
+    res.status(200).send();
+  });
 
   app.route('/parties')
     .get(partyController.getParties)

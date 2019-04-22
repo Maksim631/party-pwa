@@ -25,10 +25,9 @@
   </mat-checkbox>
   <mat-form-field class="create-party__content_field">
     <mat-label>Category</mat-label>
-    <mat-select>
+    <mat-select [(value)]="data.category">
       <mat-option *ngFor="let category of categories"
-                  [value]="data.category.title"
-                  (onSelectionChange)="changeCategory($event)">
+                  [value]="category">
         {{category.title}}
       </mat-option>
     </mat-select>

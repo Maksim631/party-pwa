@@ -3,7 +3,8 @@ import {Category} from '../shared/models/category';
 export class AddCategory {
   static readonly type = '[Category] Add new';
 
-  constructor(public category: Category) {
+  constructor(public category: Category,
+              public fromServer?: boolean) {
   }
 }
 

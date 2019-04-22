@@ -45,5 +45,6 @@ export class CreatePartyComponent implements OnInit, OnDestroy {
     this.data.category = this.categories.find((category: Category) => {
       return category.title === event.source.viewValue;
     });
+    console.log(this.data.category);
   }
 }

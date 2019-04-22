@@ -18,7 +18,8 @@
     <mat-form-field class="party-card__content_field">
       <input matInput placeholder="Address" [disabled]="!isChanging" [(ngModel)]="party.address">
     </mat-form-field>
-    <mat-checkbox [(ngModel)]="party.enter"
+    <mat-checkbox class="party-card__content_field"
+                  [(ngModel)]="party.enter"
                   [color]="'primary'"
                   [disabled]="!isChanging"
                   [labelPosition]="'before'">
@@ -26,11 +27,11 @@
     </mat-checkbox>
     <mat-form-field class="party-card__content_field">
       <mat-label>Category</mat-label>
-      <mat-select>
+      <mat-select [(value)]="party.category">
         <mat-option *ngFor="let category of categories"
-                    [value]="party.category.title"
+                    [value]="category"
                     [disabled]="!isChanging"
-                    (onSelectionChange)="changeCategory($event)">
+                    >
           {{category.title}}
         </mat-option>
       </mat-select>

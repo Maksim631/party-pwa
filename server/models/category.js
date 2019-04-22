@@ -1,7 +1,7 @@
-module.exports = class Party {
-    constructor(_category) {
-        this.id = this.globalCounterCat++;
-        this.title = _category.title;
+module.exports = class Category {
+    constructor(title ) {
+        this.id = globalCounterCat++;
+        this.title = title;
     }
 };
 
