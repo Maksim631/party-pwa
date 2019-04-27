@@ -20,6 +20,7 @@ export class AppComponent implements OnInit {
   constructor(private tabService: TabService,
               private partyHttpService: PartyHttpService,
               private categoryHttpService: CategoryHttpService,
+              private onlineService: OnlineService,
               private store: Store) {
 
   }

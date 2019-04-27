@@ -6,7 +6,8 @@ var express = require('express'),
   app = express(),
   bodyParser = require('body-parser'),
   Party = require('./models/party'),
-  Category = require('./models/category');
+  Category = require('./models/category'),
+  port = 3000;
 
 app.use(express.static(path.join(__dirname, 'dist')));
 

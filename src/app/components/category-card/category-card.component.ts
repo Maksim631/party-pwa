@@ -14,6 +14,7 @@ export class CategoryCardComponent implements OnInit {
   public category: Category;
 
 
+  message: string;
   public isChanging = false;
 
   constructor(private store: Store) {

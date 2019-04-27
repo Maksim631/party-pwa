@@ -38,7 +38,7 @@ import { CreateCategoryComponent } from './components/create-category/create-cat
     NgxsModule.forRoot([
       CategoryState,
       PartyState
-    ]),
+    ], { developmentMode: true }),
     NgxsReduxDevtoolsPluginModule.forRoot(),
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],

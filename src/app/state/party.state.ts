@@ -11,15 +11,16 @@ import {Category} from '../shared/models/category';
 export class PartyState {
   @Action(AddParty)
   addParty(ctx: StateContext<Party[]>, action: AddParty) {
-    ctx.getState().push(action.party);
+    ctx.setState((state) => [...state, action.party]);
   }
 
   @Action(DeleteParty)
   deleteParty(ctx: StateContext<Party[]>, action: DeleteParty) {
-    const state = ctx.getState();
-    ctx.setState(_.remove(state, (party: Party) => {
-      return party.id !== action.partyId;
-    }));
+    const state = [...ctx.getState()];
+    _.remove(state, (party: Party) => {
+      return party.id === action.partyId;
+    });
+    ctx.setState(state);
   }
 
   @Action(ChangeParty)

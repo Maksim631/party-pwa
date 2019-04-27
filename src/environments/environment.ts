@@ -3,8 +3,8 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: true,
-  url: 'https://us-central1-party-pwa-f1c28.cloudfunctions.net/api'
+  production: false,
+  url: 'http://localhost:3000'
 };
 
 /*
