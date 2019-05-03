@@ -1,4 +1,4 @@
-import {Action, State, StateContext} from '@ngxs/store';
+import {Action, createSelector, Selector, State, StateContext} from '@ngxs/store';
 import _ from 'node_modules/lodash';
 import {Category} from '../shared/models/category';
 import {AddCategory, ChangeCategory, DeleteCategory} from '../actions/category.action';
@@ -8,6 +8,14 @@ import {AddCategory, ChangeCategory, DeleteCategory} from '../actions/category.a
   defaults: []
 })
 export class CategoryState {
+
+  static category(id: number) {
+    return createSelector([CategoryState], (state: Category[]) => {
+      return state.find((category: Category) => {
+        return category.id === id;
+      });
+    });
+  }
 
   @Action(AddCategory)
   addCategory(ctx: StateContext<Category[]>, action: AddCategory) {

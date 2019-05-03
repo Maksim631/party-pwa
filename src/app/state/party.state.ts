@@ -1,4 +1,4 @@
-import {Action, State, StateContext} from '@ngxs/store';
+import {Action, createSelector, State, StateContext} from '@ngxs/store';
 import {Party} from '../shared/models/party';
 import {AddParty, ChangeParty, DeleteParty} from '../actions/party.action';
 import _ from 'node_modules/lodash';
@@ -9,6 +9,14 @@ import {Category} from '../shared/models/category';
   defaults: []
 })
 export class PartyState {
+  static party(id: number) {
+    return createSelector([PartyState], (state: Party[]) => {
+      return state.filter((party: Party) => {
+        return party.id === id;
+      });
+    });
+  }
+
   @Action(AddParty)
   addParty(ctx: StateContext<Party[]>, action: AddParty) {
     ctx.setState((state) => [...state, action.party]);
@@ -25,7 +33,7 @@ export class PartyState {
 
   @Action(ChangeParty)
   changeParty(ctx: StateContext<Party[]>, action: ChangeParty) {
-    const state = ctx.getState();
+    const state = [...ctx.getState()];
     const index = _.findIndex(state, (party: Party) => {
       return party.id === action.party.id;
     });

@@ -16,6 +16,14 @@ export class PartyCardComponent implements OnInit {
   @Input()
   public party: Party;
 
+  public title: string;
+  public description: string;
+  public enter: boolean;
+  public date: Date;
+  public price: number;
+  public address: string;
+  public category: Category;
+
   @Select(CategoryState)
   private categories$: Observable<Category[]>;
 
@@ -30,6 +38,13 @@ export class PartyCardComponent implements OnInit {
     this.categories$.subscribe((categories: Category[]) => {
       this.categories = categories;
     });
+    this.title = this.party.title;
+    this.description = this.party.description;
+    this.enter = this.party.enter;
+    this.date = this.party.date;
+    this.price = this.party.price;
+    this.address = this.party.address;
+    this.category = this.party.category;
   }
 
   deleteParty() {
@@ -37,6 +52,16 @@ export class PartyCardComponent implements OnInit {
   }
 
   saveParty() {
+    this.party = {
+      id: this.party.id,
+      title: this.title,
+      description: this.description,
+      enter: this.enter,
+      date: this.date,
+      price: this.price,
+      address: this.address,
+      category: this.category
+    };
     this.store.dispatch(new ChangeParty(this.party));
     this.isChanging = !this.isChanging;
   }
@@ -45,9 +70,9 @@ export class PartyCardComponent implements OnInit {
     this.isChanging = !this.isChanging;
   }
 
-  changeCategory(event: MatOptionSelectionChange) {
-    this.party.category = this.categories.find((category: Category) => {
-      return category.title === event.source.viewValue;
+  changeCategory(event: any) {
+    this.category = this.categories.find((category: Category) => {
+      return category.id === event;
     });
   }
 }

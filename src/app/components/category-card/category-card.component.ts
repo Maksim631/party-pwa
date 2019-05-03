@@ -2,7 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {Store} from '@ngxs/store';
 import {Category} from '../../shared/models/category';
 import {ChangeCategory, DeleteCategory} from '../../actions/category.action';
-
+import {CategoryState} from '../../state/category.state';
 @Component({
   selector: 'app-category-card',
   templateUrl: './category-card.component.html',
@@ -12,15 +12,15 @@ export class CategoryCardComponent implements OnInit {
 
   @Input()
   public category: Category;
+  public title: string;
 
-
-  message: string;
   public isChanging = false;
 
   constructor(private store: Store) {
   }
 
   ngOnInit() {
+    this.title = this.category.title;
   }
 
   deleteCategory() {
@@ -28,6 +28,10 @@ export class CategoryCardComponent implements OnInit {
   }
 
   saveCategory() {
+    this.category = {
+      id: this.category.id,
+      title: this.title
+    };
     this.store.dispatch(new ChangeCategory(this.category));
     this.isChanging = !this.isChanging;
   }

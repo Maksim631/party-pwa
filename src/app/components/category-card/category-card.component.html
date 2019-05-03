@@ -2,8 +2,9 @@
   <mat-card-header>
     <mat-card-title>
       <mat-form-field class="category-card__content_field">
-        <input matInput type="text" placeholder="Title" [disabled]="!isChanging" [(ngModel)]="category.title">
+        <input matInput type="text" placeholder="Title" [disabled]="!isChanging" [(ngModel)]="title">
       </mat-form-field>
+      {{title}}
     </mat-card-title>
   </mat-card-header>
   <mat-card-actions class="category-card__actions">

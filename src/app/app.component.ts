@@ -36,7 +36,6 @@ export class AppComponent implements OnInit {
       });
     });
     this.categoryHttpService.getCategories().subscribe((categories: Category[]) => {
-      console.log(categories);
       categories.forEach(category => {
         this.store.dispatch(new AddCategory(category, true));
       });
