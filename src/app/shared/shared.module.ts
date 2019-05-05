@@ -20,11 +20,14 @@ import {CreatePartyComponent} from '../components/create-party/create-party.comp
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {CreateCategoryComponent} from '../components/create-category/create-category.component';
 import {OnlineService} from './services/online.service';
+import {TranslatePipe} from './translate/translate.pipe';
 
 
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    TranslatePipe
+  ],
   imports: [
     CommonModule,
     HttpClientModule,
@@ -57,7 +60,8 @@ import {OnlineService} from './services/online.service';
     MatButtonModule,
     MatTabsModule,
     MatDialogModule,
-    MatToolbarModule
+    MatToolbarModule,
+    TranslatePipe
   ],
   providers: [
     PartyHttpService,

@@ -1,30 +1,30 @@
 <div class="create-party" mat-dialog-content>
   <mat-form-field class="create-party__content_field">
-    <input matInput placeholder="Title" [(ngModel)]="data.title">
+    <input matInput placeholder="{{'title' | translate}}" [(ngModel)]="data.title">
   </mat-form-field>
   <mat-form-field class="create-party__content_field">
-    <input matInput placeholder="Description" [(ngModel)]="data.description">
+    <input matInput placeholder="{{'description' | translate}}" [(ngModel)]="data.description">
   </mat-form-field>
   <mat-form-field class="create-party__content_field">
-    <input matInput [matDatepicker]="datePicker" placeholder="Date"
+    <input matInput [matDatepicker]="datePicker" placeholder="{{'date' | translate}}"
            [(ngModel)]="data.date">
     <mat-datepicker-toggle matSuffix [for]="datePicker"></mat-datepicker-toggle>
     <mat-datepicker #datePicker></mat-datepicker>
   </mat-form-field>
 
   <mat-form-field class="create-party__content_field">
-    <input matInput type="number" placeholder="Price" [(ngModel)]="data.price">
+    <input matInput type="number" placeholder="{{'price' | translate}}" [(ngModel)]="data.price">
   </mat-form-field>
   <mat-form-field class="create-party__content_field">
-    <input matInput placeholder="Address" [(ngModel)]="data.address">
+    <input matInput placeholder="{{'address' | translate}}" [(ngModel)]="data.address">
   </mat-form-field>
   <mat-checkbox [(ngModel)]="data.enter"
                 [color]="'primary'"
                 [labelPosition]="'before'">
-    <span>Free enter</span>
+    <span>{{'freeEnter' | translate}}</span>
   </mat-checkbox>
   <mat-form-field class="create-party__content_field">
-    <mat-label>Category</mat-label>
+    <mat-label>{{'category' | translate}}</mat-label>
     <mat-select [(value)]="data.category">
       <mat-option *ngFor="let category of categories"
                   [value]="category">
@@ -35,9 +35,9 @@
 </div>
 <mat-toolbar class="create-party__toolbar" mat-dialog-actions>
   <button mat-raised-button color="primary" [mat-dialog-close]="data" >
-    <span>Save</span>
+    <span>{{'save' | translate}}</span>
   </button>
   <button mat-raised-button color="accent" (click)="onNoClick()">
-    <span>Cancel</span>
+    <span>{{'cancel' | translate}}</span>
   </button>
 </mat-toolbar>

@@ -6,27 +6,27 @@
   </mat-card-header>
   <mat-card-content class="party-card__content">
     <mat-form-field class="party-card__content_field">
-      <input matInput [matDatepicker]="datePicker" placeholder="Date" disabled
+      <input matInput [matDatepicker]="datePicker" placeholder="{{'date' | translate}}" disabled
              [(ngModel)]="date">
       <mat-datepicker-toggle matSuffix [for]="datePicker"></mat-datepicker-toggle>
       <mat-datepicker #datePicker [disabled]="!isChanging"></mat-datepicker>
     </mat-form-field>
 
     <mat-form-field class="party-card__content_field">
-      <input matInput type="number" placeholder="Price" [disabled]="!isChanging" [(ngModel)]="price">
+      <input matInput type="number" placeholder="{{'price' | translate}}" [disabled]="!isChanging" [(ngModel)]="price">
     </mat-form-field>
     <mat-form-field class="party-card__content_field">
-      <input matInput placeholder="Address" [disabled]="!isChanging" [(ngModel)]="address">
+      <input matInput placeholder="{{'address' | translate}}" [disabled]="!isChanging" [(ngModel)]="address">
     </mat-form-field>
     <mat-checkbox class="party-card__content_field"
                   [(ngModel)]="enter"
                   [color]="'primary'"
                   [disabled]="!isChanging"
                   [labelPosition]="'before'">
-      <span>Free enter</span>
+      <span>{{'freeEnter' | translate}}</span>
     </mat-checkbox>
     <mat-form-field class="party-card__content_field">
-      <mat-label>Category</mat-label>
+      <mat-label>{{'category' | translate}}</mat-label>
       <mat-select [ngModel]="category.id" (ngModelChange)="changeCategory($event)">
         <mat-option *ngFor="let currentCategory of categories"
                     [value]="currentCategory.id"
@@ -42,14 +42,14 @@
     </button>
     <mat-menu #menu="matMenu">
       <button mat-menu-item (click)="deleteParty()">
-        <span>Delete</span>
+        <span>{{'delete' | translate}}</span>
       </button>
       <button mat-menu-item (click)="changeParty()">
-        <span>Change</span>
+        <span>{{'edit' | translate}}</span>
       </button>
     </mat-menu>
     <button mat-raised-button color="primary" (click)="saveParty()" *ngIf="isChanging">
-      <span>Save</span>
+      <span>{{'save' | translate}}</span>
     </button>
   </mat-card-actions>
 </mat-card>

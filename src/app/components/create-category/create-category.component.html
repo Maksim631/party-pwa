@@ -1,13 +1,13 @@
 <div class="create-category" mat-dialog-content>
   <mat-form-field class="category-card__content_field">
-    <input matInput type="text" placeholder="Title" [(ngModel)]="data.title">
+    <input matInput type="text" placeholder="{{'title' | translate}}" [(ngModel)]="data.title">
   </mat-form-field>
 </div>
 <mat-toolbar class="create-category__toolbar" mat-dialog-actions>
   <button mat-raised-button color="primary" [mat-dialog-close]="data" >
-    <span>Save</span>
+    <span>{{'save' | translate}}</span>
   </button>
   <button mat-raised-button color="accent" (click)="onNoClick()">
-    <span>Cancel</span>
+    <span>{{'cancel' | translate}}</span>
   </button>
 </mat-toolbar>

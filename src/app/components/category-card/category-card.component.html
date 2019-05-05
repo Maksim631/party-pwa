@@ -2,7 +2,7 @@
   <mat-card-header>
     <mat-card-title>
       <mat-form-field class="category-card__content_field">
-        <input matInput type="text" placeholder="Title" [disabled]="!isChanging" [(ngModel)]="title">
+        <input matInput type="text" placeholder="{{'title' | translate}}" [disabled]="!isChanging" [(ngModel)]="title">
       </mat-form-field>
     </mat-card-title>
   </mat-card-header>
@@ -12,14 +12,14 @@
     </button>
     <mat-menu #menu="matMenu">
       <button mat-menu-item (click)="deleteCategory()">
-        <span>Delete</span>
+        <span>{{'delete' | translate}}</span>
       </button>
       <button mat-menu-item (click)="changeCategory()">
-        <span>Change</span>
+        <span>{{'edit' | translate}}</span>
       </button>
     </mat-menu>
     <button mat-raised-button color="primary" (click)="saveCategory()" *ngIf="isChanging">
-      <span>Save</span>
+      <span>{{'save' | translate}}</span>
     </button>
   </mat-card-actions>
 </mat-card>

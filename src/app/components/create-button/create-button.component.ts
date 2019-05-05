@@ -27,7 +27,7 @@ export class CreateButtonComponent implements OnInit {
   public createParty() {
     this.tabService.setActiveTab(0);
     const dialogRef = this.dialog.open(CreatePartyComponent, {
-      width: '50%',
+      width: 'auto',
       data: {date: new Date(), category: {}}
     });
 
