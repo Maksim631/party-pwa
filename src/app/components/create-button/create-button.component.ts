@@ -27,7 +27,7 @@ export class CreateButtonComponent implements OnInit {
   public createParty() {
     this.tabService.setActiveTab(0);
     const dialogRef = this.dialog.open(CreatePartyComponent, {
-      width: '100%',
+      width: '50%',
       data: {date: new Date(), category: {}}
     });
 
@@ -42,7 +42,7 @@ export class CreateButtonComponent implements OnInit {
   public createCategory() {
     this.tabService.setActiveTab(1);
     const dialogRef = this.dialog.open(CreateCategoryComponent, {
-      width: '100%',
+      width: 'auto',
       data: {}
     });
 

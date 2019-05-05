@@ -3,7 +3,7 @@
     <input matInput type="text" placeholder="Title" [(ngModel)]="data.title">
   </mat-form-field>
 </div>
-<mat-toolbar>
+<mat-toolbar class="create-category__toolbar" mat-dialog-actions>
   <button mat-raised-button color="primary" [mat-dialog-close]="data" >
     <span>Save</span>
   </button>
