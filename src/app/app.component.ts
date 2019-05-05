@@ -32,7 +32,7 @@ export class AppComponent implements OnInit {
 
     this.partyHttpService.getParties().subscribe((parties: Party[]) => {
       parties.forEach(party => {
-        this.store.dispatch(new AddParty(party));
+        this.store.dispatch(new AddParty(party, true));
       });
     });
     this.categoryHttpService.getCategories().subscribe((categories: Category[]) => {

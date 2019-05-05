@@ -52,20 +52,24 @@ export class OnlineService {
   }
 
   private setActionListeners() {
-    combineLatest(this.actions$.pipe(ofActionCompleted(AddCategory, DeleteCategory, ChangeCategory)), this.getStatus())
-      .subscribe(([action, status]) => {
+    this.actions$.pipe(ofActionCompleted(AddCategory, DeleteCategory, ChangeCategory)).subscribe((action) => {
+      if (!action.action.fromServer) {
+        this.getStatus().subscribe(status => {
           if (status) {
             this.updateCategoryServerData();
           }
-        }
-      );
-    combineLatest(this.actions$.pipe(ofActionCompleted(AddParty, DeleteParty, ChangeParty)), this.getStatus())
-      .subscribe(([action, status]) => {
+        }).unsubscribe();
+      }
+    });
+    this.actions$.pipe(ofActionCompleted(AddParty, DeleteParty, ChangeParty)).subscribe((action) => {
+      if (!action.action.fromServer) {
+        this.getStatus().subscribe(status => {
           if (status) {
             this.updatePartyServerData();
           }
-        }
-      );
+        }).unsubscribe();
+      }
+    });
   }
 
   private updateCategoryServerData() {

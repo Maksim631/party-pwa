@@ -3,7 +3,8 @@ import {Party} from '../shared/models/party';
 export class AddParty {
   static readonly type = '[Party] Add new';
 
-  constructor(public party: Party) {
+  constructor(public party: Party,
+              public fromServer?: boolean) {
   }
 }
 
